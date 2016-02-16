@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+  <head>
+  </head>
+  <body>
+
+    <table style="float:left;width:600px">
+      <tr>
+        <td>Where</td>
+        <td><div lang="vi">&#7903; &#273;&#226;u</div></td>
+        <td><audio src="/audio/test.mp3" preload="auto" controls></audio></td>
+      </tr>
+      <tr>
+        <td>Here</td>
+        <td><div lang="vi">&#7903; &#273;&#226;y</div></td>
+        <td><audio src="audio/here.m4a" preload="auto" controls></audio></td>
+      </tr>
+      <tr>
+        <td>There</td>
+        <td><div lang="vi">&#7903; &#273;&#243;</div></td>
+        <td><audio src="audio/there.m4a" preload="auto" controls></audio></td>
+      </tr>
+      <tr>
+        <td>There(further away)</td>
+        <td><div lang="vi">&#7903; kia</div></td>
+        <td><audio src="audio/there(furtheraway).m4a" preload="auto" controls></audio></td>
+      </tr>
+    </table>
+    <!--<table style="float:left;width:400px">
+      <tr>
+        <td>Where</td>
+        <td><div lang="vi">&#7903; dau</div></td>
+        <td><audio src="test.m4a" preload="auto" controls></audio></td>
+      </tr>
+      <tr>
+        <td>When</td>
+        <td><div lang="vi">&#7903; dau</div></td>
+        <td><audio src="test.m4a" preload="auto" controls></audio></td>
+      </tr>
+      <tr>
+        <td>Why</td>
+        <td><div lang="vi">&#7903; dau</div></td>
+        <td><audio src="test.m4a" preload="auto" controls></audio></td>
+      </tr>
+    </table>-->
+
+    <form id        =  "uploadForm"
+     enctype   =  "multipart/form-data"
+     action    =  "/api/photo"
+     method    =  "post">
+    <input type="file" name="userPhoto" />
+    <input type="submit" value="Upload Image" name="submit">
+    </form>
+  </body>
+</html>
