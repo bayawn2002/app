@@ -1,7 +1,11 @@
 var express =   require("express");
 var bodyParser  = require('body-parser');
 var multer  =   require('multer');
+var word    = require('./routes/word');
 var app         =   express();
+//app
+//app_user
+//cobrar31
 var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './audio');
@@ -27,7 +31,8 @@ app.get('/audio/:thing', function (req, res) {
 });
 
 app.get('/getfiles', function(req, res){
-    res.send("{\"text\": \"when\", \"viet\": \"some text here\", \"file\":\"audio/test\"}");
+  word.read;
+    //res.send("{\"text\": \"when\", \"viet\": \"some text here\", \"file\":\"audio/test\"}");
 });
 
 app.use( bodyParser.json() );
