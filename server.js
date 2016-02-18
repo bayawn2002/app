@@ -13,17 +13,21 @@ var storage =   multer.diskStorage({
 var upload = multer({ storage : storage}).single('userPhoto');
 
 //app.use(serveStatic(__dirname + '/audio/'));
-app.get('/',function(req,res){
+/*app.get('/',function(req,res){
       res.sendFile(__dirname + "/index.html");
 });
 
 app.get('/test.jpg', function (req, res) {
   //console.log(req.params);
   res.sendFile(__dirname + '/test.jpg');
-});
+});*/
 app.get('/audio/:thing', function (req, res) {
   //console.log(req.params.thing);
   res.sendFile(__dirname + '/audio/' + req.params.thing);
+});
+
+app.get('/getfiles', function(req, res){
+    res.send("{\"text\": \"when\", \"viet\": \"some text here\", \"file\":\"audio/test\"}");
 });
 
 app.use( bodyParser.json() );
