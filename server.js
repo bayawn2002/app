@@ -3,6 +3,7 @@ var bodyParser  = require('body-parser');
 var multer  =   require('multer');
 var word    = require('./routes/word');
 var app         =   express();
+var router =  express.Router();
 //app
 //app_user
 //cobrar31
@@ -30,10 +31,11 @@ app.get('/audio/:thing', function (req, res) {
   res.sendFile(__dirname + '/audio/' + req.params.thing);
 });
 
-app.get('/getfiles', function(req, res){
-  word.read;
+router.get('/getfiles', word.read);
+//app.get('/getfiles', function(req, res){
+  //word.read;
     //res.send("{\"text\": \"when\", \"viet\": \"some text here\", \"file\":\"audio/test\"}");
-});
+//});
 
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
