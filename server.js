@@ -1,9 +1,13 @@
 var express =   require("express");
 var bodyParser  = require('body-parser');
 var multer  =   require('multer');
-var word    = require('./routes/word');
+ word    = require('./routes/word');
 var app         =   express();
 var router =  express.Router();
+
+conn = null;
+config = require('./lib/config');
+db = require('./lib/database');
 //app
 //app_user
 //cobrar31
@@ -26,16 +30,25 @@ app.get('/test.jpg', function (req, res) {
   //console.log(req.params);
   res.sendFile(__dirname + '/test.jpg');
 });*/
+console.log('test');
 app.get('/audio/:thing', function (req, res) {
   //console.log(req.params.thing);
   res.sendFile(__dirname + '/audio/' + req.params.thing);
 });
-
-router.get('/getfiles', word.read);
-//app.get('/getfiles', function(req, res){
-  //word.read;
-    //res.send("{\"text\": \"when\", \"viet\": \"some text here\", \"file\":\"audio/test\"}");
+//app.use('/getfiles', router);
+//router.use(function(req, res, next){
+	config.set();
 //});
+///router.get('/getfiles', word.read);
+app.get('/getfiles', function(req, res){
+//console.log('tt');
+	db.query('select * from words where page_id = 1', function(rows){
+		res.send(rows.data);
+	});
+//console.log(word.read());
+  //res.send(word.read());
+    //res.send("{\"text\": \"when\", \"viet\": \"some text here\", \"file\":\"audio/test\"}");
+});
 
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
