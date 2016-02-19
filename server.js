@@ -16,7 +16,7 @@ var storage =   multer.diskStorage({
     callback(null, './audio');
   },
   filename: function (req, file, callback) {
-    callback(null, file.fieldname + '-' + Date.now());
+    callback(null, file.fieldname);
   }
 });
 var upload = multer({ storage : storage}).single('userPhoto');
@@ -30,34 +30,34 @@ app.get('/test.jpg', function (req, res) {
   //console.log(req.params);
   res.sendFile(__dirname + '/test.jpg');
 });*/
-console.log('test');
+
+config.set();
 app.get('/audio/:thing', function (req, res) {
   //console.log(req.params.thing);
   res.sendFile(__dirname + '/audio/' + req.params.thing);
 });
-//app.use('/getfiles', router);
-//router.use(function(req, res, next){
-	config.set();
-//});
-///router.get('/getfiles', word.read);
+
 app.get('/getfiles', function(req, res){
-//console.log('tt');
 	db.query('select * from words where page_id = 1', function(rows){
 		res.send(rows.data);
 	});
-//console.log(word.read());
-  //res.send(word.read());
-    //res.send("{\"text\": \"when\", \"viet\": \"some text here\", \"file\":\"audio/test\"}");
 });
 
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
 
-app.post('/api/photo',function(req,res){
+app.post('/putfiles',function(req,res){
+  console.log(req);
     upload(req,res,function(err) {
         if(err) {
             return res.end("Error uploading file.");
         }
+
+        // store data
+        //db.query('insert into words(page_id, word, viet_word, file) VALUES', function(rows){
+        //  res.send(rows.data);
+        //});
+
         res.end("File is uploaded");
     });
 });
